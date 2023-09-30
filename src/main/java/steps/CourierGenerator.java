@@ -1,11 +1,13 @@
 package steps;
 
+import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
 import ru.java.samokat.pojo.CreateNewCouriersRequest;
 
 import java.util.Random;
 
 public class CourierGenerator {
+
 
     public static CreateNewCouriersRequest genericCourier() {
         CreateNewCouriersRequest request = new CreateNewCouriersRequest();
@@ -15,6 +17,7 @@ public class CourierGenerator {
         return request;
     }
 
+    @Step("Создает json request с параметрами")
     public static CreateNewCouriersRequest random() {
         CreateNewCouriersRequest request = new CreateNewCouriersRequest();
         request.setLogin(RandomStringUtils.randomAlphanumeric(4,9));
