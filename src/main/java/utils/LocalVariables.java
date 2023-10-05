@@ -10,4 +10,6 @@ public class LocalVariables {
 
     public static final String COURIER_LOGIN = "/login";
 
+    public static final String COURIER_ID = "/:id";
+
 }

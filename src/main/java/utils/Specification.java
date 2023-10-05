@@ -34,10 +34,23 @@ public class Specification {
                     .build();
 
 
+    public static final ResponseSpecification RES_SPEC_CONFLICT =
+            new ResponseSpecBuilder()
+                    .log(LogDetail.ALL)
+                    .expectStatusCode(HttpURLConnection.HTTP_CONFLICT)
+                    .build();
+
+
     public static final ResponseSpecification RES_SPEC_OK =
             new ResponseSpecBuilder()
                     .log(LogDetail.ALL)
                     .expectStatusCode(HttpURLConnection.HTTP_OK)
+                    .build();
+
+    public static final ResponseSpecification RES_SPEC_BAD_REQUEST =
+            new ResponseSpecBuilder()
+                    .log(LogDetail.ALL)
+                    .expectStatusCode(HttpURLConnection.HTTP_BAD_REQUEST)
                     .build();
 
 }
