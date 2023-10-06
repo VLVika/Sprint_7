@@ -7,11 +7,8 @@ import ru.java.samokat.pojo.CreateNewCouriersRequest;
 public class CourierGenerator {
 
 
-    public static CreateNewCouriersRequest genericCourier() {
-        CreateNewCouriersRequest request = new CreateNewCouriersRequest();
-        request.setLogin("Иван1286");
-        request.setPassword("1258");
-        request.setFirstName("ИванV9");
+    public static CreateNewCouriersRequest genericCourier(String login, String password, String firstName) {
+        CreateNewCouriersRequest request = new CreateNewCouriersRequest(login, password, firstName);
         return request;
     }
 

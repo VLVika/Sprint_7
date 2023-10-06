@@ -1,5 +1,7 @@
 package ru.yandex.samokat.api.test;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.ChecEquals;
 import steps.CourierClient;
@@ -7,14 +9,23 @@ import steps.CourierGenerator;
 
 import static io.restassured.RestAssured.given;
 
+@DisplayName("Создание курьера - негативные тесты")
 public class CreateCourierNegativTest {
 
     String expected = "Недостаточно данных для создания учетной записи";
 
-    private final CourierClient client = new CourierClient();
-    private final ChecEquals check = new ChecEquals();
+    private CourierClient client;
+    private ChecEquals check;
 
 
+    @BeforeEach
+    public void SetUp(){
+        client = new CourierClient();
+        check = new ChecEquals();
+    }
+
+
+    @DisplayName("Попытка создания курьера с пустым обязательным полем Пароль в json запроса")
     @Test
     void createCourierWithEmptyPassword(){
 
@@ -27,7 +38,7 @@ public class CreateCourierNegativTest {
     }
 
 
-
+    @DisplayName("Попытка создания курьера с пустым обязательным полем Логин в json запроса")
     @Test
     void createCourierWithEmptyLogin(){
 
@@ -39,6 +50,7 @@ public class CreateCourierNegativTest {
 
     }
 
+    @DisplayName("Попытка создания курьера без поля FirstName в json запросе")
     @Test
     void createCourierWithoutFieldFirstName(){
 
@@ -50,6 +62,7 @@ public class CreateCourierNegativTest {
 
     }
 
+    @DisplayName("Попытка создания курьера без поля Пароль в json запросе")
     @Test
     void createCourierWithoutFieldPassword(){
 
@@ -61,6 +74,8 @@ public class CreateCourierNegativTest {
 
     }
 
+
+    @DisplayName("Попытка создания курьера без поля Логин в json запросе")
     @Test
     void createCourierWithoutFieldLogin(){
 

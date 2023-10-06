@@ -38,7 +38,7 @@ public class CourierClient {
 
     @Step("Отправляем json запрос/логинимся в приложении, полученный ответ в виде id кладём в переменную")
     public int login(CourierLoginRequest creds) {
-        return given()
+        int id =  given()
                 .spec(REQ_SPEC)
                 .body(creds)
                 .when()
@@ -46,6 +46,7 @@ public class CourierClient {
                 .then()
                 .spec(RES_SPEC_OK)
                 .extract().jsonPath().getInt("id");
+        return id;
     }
 
     @Step("Отправляем delete запрос для удаления курьера, полученный ответ boolean кладем в переменную")

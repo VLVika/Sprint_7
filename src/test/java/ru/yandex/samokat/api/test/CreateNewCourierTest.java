@@ -1,6 +1,8 @@
 package ru.yandex.samokat.api.test;
 
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.java.samokat.pojo.CourierLoginRequest;
@@ -15,9 +17,15 @@ import static io.restassured.RestAssured.given;
 @DisplayName("Создание курьера")
 public class CreateNewCourierTest {
 
-    private final CourierClient client = new CourierClient();
+    private CourierClient client;
     private final ChekGetTrue check = new ChekGetTrue();
+    private int CorierId;
 
+
+    @BeforeEach
+    public void SetUp(){
+        client = new CourierClient();
+    }
 
 
     @DisplayName("Проверка успешного создания нового курьера")
@@ -26,23 +34,22 @@ public class CreateNewCourierTest {
     void createNewCourierTest(){
 
         var courier = CourierGenerator.random();
-
         boolean response = client.createClient(courier);
-
         check.assertCreateGetTrue(response);
 
         var creds = CourierLoginRequest.from(courier);
+        CorierId = client.login(creds);
+        assert CorierId!=0;
 
-        int id = client.login(creds);
-
-        assert id!=0;
-
-        boolean responseDelete = client.isSuccessDelete(id);
-
-        check.assertCreateGetTrue(responseDelete);
 
     }
 
+    @AfterEach
+    public void courierDelete(){
+
+        boolean responseDelete = client.isSuccessDelete(CorierId);
+        check.assertCreateGetTrue(responseDelete);
+    }
 
 
 }
