@@ -53,4 +53,10 @@ public class Specification {
                     .expectStatusCode(HttpURLConnection.HTTP_BAD_REQUEST)
                     .build();
 
+    public static final ResponseSpecification RES_SPEC_NOT_FOUND =
+            new ResponseSpecBuilder()
+                    .log(LogDetail.ALL)
+                    .expectStatusCode(HttpURLConnection.HTTP_NOT_FOUND)
+                    .build();
+
 }

@@ -49,6 +49,33 @@ public class CourierClient {
         return id;
     }
 
+    @Step("Отправляем json запрос/логинимся в приложении с неправильным password или login, полученный ответ кладём в переменную")
+    public String loginWithWrongParams(CourierLoginRequest creds) {
+        String message =  given()
+                .spec(REQ_SPEC)
+                .body(creds)
+                .when()
+                .post(PATH_COURIER + COURIER_LOGIN)
+                .then()
+                .spec(RES_SPEC_NOT_FOUND)
+                .extract().jsonPath().getString("message");
+        return message;
+    }
+
+    @Step("Отправляем json запрос/логинимся в приложении с пустым полем password или login, полученный ответ кладём в переменную")
+    public String loginWithEmptyField(CourierLoginRequest creds) {
+        String message =  given()
+                .spec(REQ_SPEC)
+                .body(creds)
+                .when()
+                .post(PATH_COURIER + COURIER_LOGIN)
+                .then()
+                .spec(RES_SPEC_BAD_REQUEST)
+                .extract().jsonPath().getString("message");
+        return message;
+    }
+
+
     @Step("Отправляем delete запрос для удаления курьера, полученный ответ boolean кладем в переменную")
     public boolean isSuccessDelete(int id) {
         return given()

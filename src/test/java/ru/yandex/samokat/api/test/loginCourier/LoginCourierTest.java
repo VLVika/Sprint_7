@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test;
+package ru.yandex.samokat.api.test.loginCourier;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +9,7 @@ import ru.java.samokat.pojo.CreateNewCouriersRequest;
 import steps.ChekGetTrue;
 import steps.CourierClient;
 import steps.CourierGenerator;
+import steps.LoginGenerator;
 
 
 @DisplayName("Логин курьера в системе")
@@ -35,7 +36,7 @@ public class LoginCourierTest {
     @DisplayName("Логин курьера в системе")
     @Test
     void loginCourierTest(){
-        var creds = CourierLoginRequest.from(courier);
+        var creds = LoginGenerator.from(courier);
         CorierId = client.login(creds);
         assert CorierId!=0;
     }

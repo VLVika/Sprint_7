@@ -1,14 +1,11 @@
-package ru.yandex.samokat.api.test;
+package ru.yandex.samokat.api.test.createCourier;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.java.samokat.pojo.CourierLoginRequest;
-import steps.ChecEquals;
-import steps.ChekGetTrue;
-import steps.CourierClient;
-import steps.CourierGenerator;
+import steps.*;
 
 @DisplayName("Создание одинаковых курьеров")
 public class CreateTheSameCourierTest {
@@ -39,7 +36,7 @@ public class CreateTheSameCourierTest {
 
         String responseTheSame = client.createTheSameClient(courier);
         checkEquals.checkEquals(responseTheSame,expected);
-        var creds = CourierLoginRequest.from(courier);
+        var creds = LoginGenerator.from(courier);
 
         CorierId = client.login(creds);
         assert CorierId!=0;
