@@ -28,34 +28,34 @@ public class Specification {
 
 
     public static final ResponseSpecification RES_SPEC_CREATED =
-            new ResponseSpecBuilder()
-                    .log(LogDetail.ALL)
+            getSpecBuilder()
                     .expectStatusCode(HttpURLConnection.HTTP_CREATED)
                     .build();
 
+    private static ResponseSpecBuilder getSpecBuilder() {
+        return new ResponseSpecBuilder()
+                .log(LogDetail.ALL);
+    }
+
 
     public static final ResponseSpecification RES_SPEC_CONFLICT =
-            new ResponseSpecBuilder()
-                    .log(LogDetail.ALL)
+            getSpecBuilder()
                     .expectStatusCode(HttpURLConnection.HTTP_CONFLICT)
                     .build();
 
 
     public static final ResponseSpecification RES_SPEC_OK =
-            new ResponseSpecBuilder()
-                    .log(LogDetail.ALL)
+            getSpecBuilder()
                     .expectStatusCode(HttpURLConnection.HTTP_OK)
                     .build();
 
     public static final ResponseSpecification RES_SPEC_BAD_REQUEST =
-            new ResponseSpecBuilder()
-                    .log(LogDetail.ALL)
+            getSpecBuilder()
                     .expectStatusCode(HttpURLConnection.HTTP_BAD_REQUEST)
                     .build();
 
     public static final ResponseSpecification RES_SPEC_NOT_FOUND =
-            new ResponseSpecBuilder()
-                    .log(LogDetail.ALL)
+            getSpecBuilder()
                     .expectStatusCode(HttpURLConnection.HTTP_NOT_FOUND)
                     .build();
 
