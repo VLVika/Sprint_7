@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test;
+package ru.yandex.samokat.api.test.createCourier;
 
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.AfterEach;
@@ -9,6 +9,7 @@ import ru.java.samokat.pojo.CourierLoginRequest;
 import steps.ChekGetTrue;
 import steps.CourierClient;
 import steps.CourierGenerator;
+import steps.LoginGenerator;
 
 
 import static io.restassured.RestAssured.given;
@@ -37,7 +38,7 @@ public class CreateNewCourierTest {
         boolean response = client.createClient(courier);
         check.assertCreateGetTrue(response);
 
-        var creds = CourierLoginRequest.from(courier);
+        var creds = LoginGenerator.from(courier);
         CorierId = client.login(creds);
         assert CorierId!=0;
 

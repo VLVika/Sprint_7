@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test;
+package ru.yandex.samokat.api.test.createCourier;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
