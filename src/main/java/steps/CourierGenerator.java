@@ -6,7 +6,7 @@ import ru.java.samokat.pojo.CreateNewCouriersRequest;
 
 public class CourierGenerator {
 
-
+    @Step("Создает json request с параметрами")
     public static CreateNewCouriersRequest genericCourier(String login, String password, String firstName) {
         CreateNewCouriersRequest request = new CreateNewCouriersRequest(login, password, firstName);
         return request;

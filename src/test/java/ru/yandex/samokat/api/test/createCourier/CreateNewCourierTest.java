@@ -1,18 +1,15 @@
 package ru.yandex.samokat.api.test.createCourier;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.java.samokat.pojo.CourierLoginRequest;
 import steps.ChekGetTrue;
 import steps.CourierClient;
 import steps.CourierGenerator;
 import steps.LoginGenerator;
-
-
-import static io.restassured.RestAssured.given;
 
 
 @DisplayName("Создание курьера")
@@ -23,6 +20,7 @@ public class CreateNewCourierTest {
     private int CorierId;
 
 
+    @Step("создает экземпляры классов для тестирования")
     @BeforeEach
     public void SetUp(){
         client = new CourierClient();

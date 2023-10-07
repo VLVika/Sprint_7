@@ -81,7 +81,7 @@ public class CourierClient {
         return given()
                 .spec(REQ_SPEC)
                 .when()
-                .delete("/courier/" + id)
+                .delete(PATH_COURIER + "/" + id)
                 .then()
                 .spec(RES_SPEC_OK)
                 .extract().jsonPath().getBoolean("ok");

@@ -1,7 +1,5 @@
 package ru.java.samokat.pojo;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
 public class CourierLoginRequest {
 
     private String login;

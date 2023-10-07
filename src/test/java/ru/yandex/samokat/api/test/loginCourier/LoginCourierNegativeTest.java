@@ -1,9 +1,12 @@
 package ru.yandex.samokat.api.test.loginCourier;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import steps.*;
+import steps.ChecEquals;
+import steps.CourierClient;
+import steps.LoginGenerator;
 
 
 @DisplayName("Логин курьера в систему негитивные тесты")
@@ -17,6 +20,7 @@ public class LoginCourierNegativeTest  {
     private String resalt = "Учетная запись не найдена";
 
 
+    @Step("создает экземпляры классов для тестирования")
     @BeforeEach
     public void SetUp(){
         client = new CourierClient();

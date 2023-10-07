@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.java.samokat.pojo.CourierLoginRequest;
 import ru.java.samokat.pojo.CreateNewCouriersRequest;
 import steps.ChekGetTrue;
 import steps.CourierClient;

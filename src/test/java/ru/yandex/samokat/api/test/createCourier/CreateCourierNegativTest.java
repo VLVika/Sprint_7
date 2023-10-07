@@ -1,13 +1,12 @@
 package ru.yandex.samokat.api.test.createCourier;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import steps.ChecEquals;
 import steps.CourierClient;
 import steps.CourierGenerator;
-
-import static io.restassured.RestAssured.given;
 
 @DisplayName("Создание курьера - негативные тесты")
 public class CreateCourierNegativTest {
@@ -18,6 +17,7 @@ public class CreateCourierNegativTest {
     private ChecEquals check;
 
 
+    @Step("создает экземпляры классов для тестирования")
     @BeforeEach
     public void SetUp(){
         client = new CourierClient();
