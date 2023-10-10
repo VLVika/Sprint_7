@@ -11,8 +11,8 @@ import static utils.Specification.*;
 
 public class CourierClient {
 
-@Step("Отправляем json запрос/создаём курьера в приложении, полученный ответ кладём в переменную")
-    public  boolean createClient(CreateNewCouriersRequest request) {
+    @Step("Отправляем json запрос/создаём курьера в приложении, полученный ответ кладём в переменную")
+    public boolean createClient(CreateNewCouriersRequest request) {
         return given()
                 .spec(REQ_SPEC)
                 .body(request)
@@ -24,7 +24,7 @@ public class CourierClient {
     }
 
     @Step("Отправляем json запрос/создаём 2го эдентичного курьера в приложении, полученный ответ кладём в переменную")
-    public  String createTheSameClient(CreateNewCouriersRequest request) {
+    public String createTheSameClient(CreateNewCouriersRequest request) {
         return given()
                 .spec(REQ_SPEC)
                 .body(request)
@@ -38,7 +38,7 @@ public class CourierClient {
 
     @Step("Отправляем json запрос/логинимся в приложении, полученный ответ в виде id кладём в переменную")
     public int login(CourierLoginRequest creds) {
-        int id =  given()
+        int id = given()
                 .spec(REQ_SPEC)
                 .body(creds)
                 .when()
@@ -51,7 +51,7 @@ public class CourierClient {
 
     @Step("Отправляем json запрос/логинимся в приложении с неправильным password или login, полученный ответ кладём в переменную")
     public String loginWithWrongParams(CourierLoginRequest creds) {
-        String message =  given()
+        String message = given()
                 .spec(REQ_SPEC)
                 .body(creds)
                 .when()
@@ -64,7 +64,7 @@ public class CourierClient {
 
     @Step("Отправляем json запрос/логинимся в приложении с пустым полем password или login, полученный ответ кладём в переменную")
     public String loginWithEmptyField(CourierLoginRequest creds) {
-        String message =  given()
+        String message = given()
                 .spec(REQ_SPEC)
                 .body(creds)
                 .when()
@@ -98,7 +98,5 @@ public class CourierClient {
                 .spec(RES_SPEC_BAD_REQUEST)
                 .extract().jsonPath().getString("message");
     }
-
-
 
 }

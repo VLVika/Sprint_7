@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test.loginCourier;
+package ru.yandex.samokat.api.test.courier;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +10,7 @@ import steps.LoginGenerator;
 
 
 @DisplayName("Логин курьера в систему негитивные тесты")
-public class LoginCourierNegativeTest  {
+public class LoginCourierNegativeTest {
 
     private CourierClient client;
     private ChecEquals checEquals;
@@ -22,56 +22,54 @@ public class LoginCourierNegativeTest  {
 
     @Step("создает экземпляры классов для тестирования")
     @BeforeEach
-    public void SetUp(){
+    public void SetUp() {
         client = new CourierClient();
         checEquals = new ChecEquals();
     }
 
     @DisplayName("Логин курьера в систему с пустым поле логин")
     @Test
-    void loginCourierWithEmptyFieldLogin(){
+    void loginCourierWithEmptyFieldLogin() {
         var creds = LoginGenerator.requestWithEmptyLogin(password);
         String corierMessage = client.loginWithEmptyField(creds);
-        checEquals.checkEquals(corierMessage,expected);
+        checEquals.checkEquals(corierMessage, expected);
 
     }
 
     @DisplayName("Логин курьера в систему с пустым поле пароль")
     @Test
-    void loginCourierWithEmptyFieldPassword(){
+    void loginCourierWithEmptyFieldPassword() {
         var creds = LoginGenerator.requestWithEmptyPassword(login);
         String corierMessage = client.loginWithEmptyField(creds);
-        checEquals.checkEquals(corierMessage,expected);
+        checEquals.checkEquals(corierMessage, expected);
 
     }
 
     @DisplayName("Логин курьера в систему без поля пароль")
     @Test
-    void loginCourierWithoutFieldPassword(){
+    void loginCourierWithoutFieldPassword() {
         var creds = LoginGenerator.requestWithoutFieldPassword(login);
         String corierMessage = client.loginWithEmptyField(creds);
-        checEquals.checkEquals(corierMessage,expected);
+        checEquals.checkEquals(corierMessage, expected);
 
     }
 
     @DisplayName("Логин курьера в систему без поля логин")
     @Test
-    void loginCourierWithoutFieldLogin(){
+    void loginCourierWithoutFieldLogin() {
         var creds = LoginGenerator.requestWithoutFieldLogin(password);
         String corierMessage = client.loginWithEmptyField(creds);
-        checEquals.checkEquals(corierMessage,expected);
+        checEquals.checkEquals(corierMessage, expected);
 
     }
 
     @DisplayName("Логин курьера в систему с несуществующими параметрами")
     @Test
-    void loginFictitiousCourier(){
+    void loginFictitiousCourier() {
         var creds = LoginGenerator.requestFictitious();
         String corierMessage = client.loginWithWrongParams(creds);
-        checEquals.checkEquals(corierMessage,resalt);
+        checEquals.checkEquals(corierMessage, resalt);
 
     }
-
-
 
 }

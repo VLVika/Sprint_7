@@ -13,6 +13,8 @@ import steps.OrderGenerator;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @DisplayName("Создание заказа")
 public class CreateOrderTest {
 
@@ -34,13 +36,13 @@ public class CreateOrderTest {
     void createOrderTest(String[] color) {
         var order = OrderGenerator.createOrderRequest(color);
         orderId = client.createOrder(order);
-        assert orderId != 0;
+        assertTrue(orderId != 0, "Ошибка! Поле пустое!!!!");
 
     }
 
     @Step("Отменяет созданный заказ")
     @AfterEach
-    public void orderCancel(){
+    public void orderCancel() {
         boolean responseCancel = client.cancelOrder(orderId);
         check.assertCreateGetTrue(responseCancel);
     }
@@ -53,8 +55,6 @@ public class CreateOrderTest {
                 Arguments.of((Object) new String[]{"BLACK", "GREY"})
         );
 
-
-
-
     }
+
 }

@@ -22,13 +22,11 @@ public class GetOrderTest {
         client = new OrderClient();
     }
 
-    @DisplayName("Получает список заказо")
+    @DisplayName("Получает список заказов")
     @Test
-    void getOrderTest(){
-        List<Order> ordersList= client.getOrder();
+    void getOrderTest() {
+        List<Order> ordersList = client.getOrder();
         Assertions.assertFalse(ordersList.isEmpty());
     }
-
-
 
 }

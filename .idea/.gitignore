@@ -25,3 +25,11 @@ replay_pid*
 
 #settings IDE
 .idea
+compiler.xml
+encodings.xml
+jarRepositories.xml
+misc.xml
+modules.xml
+Sprint_7_.iml
+uiDesigner.xml
+vcs.xml

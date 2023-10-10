@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test.createCourier;
+package ru.yandex.samokat.api.test.courier;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
@@ -11,18 +11,20 @@ import steps.CourierClient;
 import steps.CourierGenerator;
 import steps.LoginGenerator;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @DisplayName("Создание курьера")
 public class CreateNewCourierTest {
 
     private CourierClient client;
     private final ChekGetTrue check = new ChekGetTrue();
-    private int CorierId;
+    private int courierId;
 
 
     @Step("создает экземпляры классов для тестирования")
     @BeforeEach
-    public void SetUp(){
+    public void SetUp() {
         client = new CourierClient();
     }
 
@@ -30,25 +32,23 @@ public class CreateNewCourierTest {
     @DisplayName("Проверка успешного создания нового курьера")
     @Description("Проверяет успешное создание курьера с рандомным именем, затем логинится в приложение, получет id курьера и удаляет его")
     @Test
-    void createNewCourierTest(){
+    void createNewCourierTest() {
 
         var courier = CourierGenerator.random();
         boolean response = client.createClient(courier);
         check.assertCreateGetTrue(response);
 
         var creds = LoginGenerator.from(courier);
-        CorierId = client.login(creds);
-        assert CorierId!=0;
-
+        courierId = client.login(creds);
+        assertTrue(courierId != 0, "Ошибка! Поле пустое!!!!");
 
     }
 
     @AfterEach
-    public void courierDelete(){
+    public void courierDelete() {
 
-        boolean responseDelete = client.isSuccessDelete(CorierId);
+        boolean responseDelete = client.isSuccessDelete(courierId);
         check.assertCreateGetTrue(responseDelete);
     }
-
 
 }

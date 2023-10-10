@@ -1,4 +1,4 @@
-package ru.yandex.samokat.api.test.loginCourier;
+package ru.yandex.samokat.api.test.courier;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +10,8 @@ import steps.CourierClient;
 import steps.CourierGenerator;
 import steps.LoginGenerator;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 @DisplayName("Логин курьера в системе")
 public class LoginCourierTest {
@@ -17,11 +19,11 @@ public class LoginCourierTest {
     private CourierClient client;
     private ChekGetTrue check;
     private CreateNewCouriersRequest courier;
-    protected int CorierId;
+    protected int courierId;
 
 
     @BeforeEach
-    public void SetUp(){
+    public void SetUp() {
         client = new CourierClient();
         check = new ChekGetTrue();
         courier = CourierGenerator.random();
@@ -30,21 +32,18 @@ public class LoginCourierTest {
     }
 
 
-
-
     @DisplayName("Логин курьера в системе")
     @Test
-    void loginCourierTest(){
+    void loginCourierTest() {
         var creds = LoginGenerator.from(courier);
-        CorierId = client.login(creds);
-        assert CorierId!=0;
+        courierId = client.login(creds);
+        assertTrue(courierId != 0, "Ошибка! Поле пустое!!!!");
     }
 
 
-
     @AfterEach
-    public void courierDelete(){
-        boolean responseDelete = client.isSuccessDelete(CorierId);
+    public void courierDelete() {
+        boolean responseDelete = client.isSuccessDelete(courierId);
         check.assertCreateGetTrue(responseDelete);
     }
 
